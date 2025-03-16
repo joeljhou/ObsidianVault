@@ -44,6 +44,19 @@ nvm install 20
 
 
 ## 客户端
+安装软件前先通过终端启用“任何来源”（推荐）
+```shell
+sudo spctl --master-disable
+```
+### Mos
+[Mos官网](https://mos.caldis.me/)推荐使用[Homebrew](https://brew.sh/)来安装:
+```shell
+# 安装
+$ brew install --cask mos
+# 更新
+$ brew update
+$ brew reinstall mos
+```
 ### IDEA
 [官网](https://www.jetbrains.com/idea/)
 IntelliJ IDEA 是一个强大的 IDE，广泛用于 Java 开发和其他多种编程语言。
