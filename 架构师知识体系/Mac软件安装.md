@@ -26,6 +26,13 @@ which curl
 curl --version
 ```
 - **macOS 自带了 `curl`**，Xcode CLI 中也包含了 `curl`。
+
+### tree
+```shell
+brew install tree
+which tree
+tree --version
+```
 ### JDK
 ```shell
 sdk install java
