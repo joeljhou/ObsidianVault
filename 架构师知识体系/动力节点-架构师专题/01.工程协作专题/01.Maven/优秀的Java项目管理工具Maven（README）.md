@@ -26,8 +26,7 @@ tags:
 [[configuring]]
 ### 5 分钟了解 Maven
 [[maven-in-five-minutes]]
-### 项目构建生命周期
-
-
-### Maven常用命令
+### 构建生命周期
+[[lifecycles]]
+### Maven依赖
 

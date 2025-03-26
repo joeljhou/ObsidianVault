@@ -58,6 +58,15 @@ export MAVEN_ARGS="-DskipTests"
 1. `settings.xml` 的 `<mirrors>`（最高优先级，覆盖所有 POM 配置）
 2. `pom.xml` 的 `<repositories>`（优先于默认中央仓库）
 3. [超级 POM](https://www.codecopy.cn/post/2jjqwx)（默认中央仓库 `https://repo.maven.apache.org/maven2/`）
+
+| 优先级        | 作用范围 | 配置位置                                                | 是否自动生效  | 备注                                             |
+| ---------- | ---- | --------------------------------------------------- | ------- | ---------------------------------------------- |
+| 1️⃣ **最高** | 全局   | `settings.xml` → `<mirrors>`                        | ✅       | 覆盖所有 POM 配置                                    |
+| 2️⃣        | 全局   | `settings.xml` → `<profiles>`                       | ❌ 需手动激活 | 影响所有 Maven 项目                                  |
+| 3️⃣        | 项目   | `pom.xml` → `<profiles>`                            | ❌ 需手动激活 | 仅对特定项目生效                                       |
+| 4️⃣        | 项目   | `pom.xml` → `<repositories>`                        | ✅       | 优先于默认中央仓库                                      |
+| 5️⃣ **最低** | 全局   | [超级 POM](https://www.codecopy.cn/post/2jjqwx)（中央仓库） | ✅       | **默认 `https://repo.maven.apache.org/maven2/`** |
+
 ### 仓库镜像源列表/工件搜索
 **仓库镜镜像源**
 *  [阿里云](https://developer.aliyun.com/mvn/guide)

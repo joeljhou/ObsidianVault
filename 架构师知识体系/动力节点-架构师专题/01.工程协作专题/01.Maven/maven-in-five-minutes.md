@@ -14,7 +14,7 @@ tags:
   - 标签
 ---
 # 5 分钟了解 Maven
-官方来源：：[maven-in-five-minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
+官方来源：[maven-in-five-minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
 ## 创建项目（命令行）
 * 官方文档：[坐标的命名约定](https://maven.apache.org/guides/mini/guide-naming-conventions.html)
 	```shell
@@ -39,7 +39,7 @@ tags:
 	* `org.apache.maven.archetypes:maven-archetype-site-simple` → 简单的 Maven 站点
 	* `org.apache.maven.archetypes:maven-archetype-webapp`→ <u>Web 应用</u>
 * [🐟代码小抄-Maven工程的目录结构](https://codecopy.cn/post/s6z4y5)
-### 设计思想（约定>配置>编码）
+## 设计思想（约定>配置>编码）
 Maven 作为 Java 构建工具，遵循 **“约定优于配置（Convention over Configuration）”** 的设计理念，并强调 **“先约定，再配置，最后编码”** 的原则。
 优点：
 ✅ **减少重复配置，保持项目结构完整，统一团队标准**
@@ -49,5 +49,3 @@ Maven 作为 Java 构建工具，遵循 **“约定优于配置（Convention ove
 * 官方文档：[POM参考](https://maven.apache.org/pom.html)
 * [🐟代码小抄-默认的超级 POM](https://codecopy.cn/post/2jjqwx)
 * [🐟代码小抄-pom.xml标签详解](https://codecopy.cn/post/op9ex9)
-
-
