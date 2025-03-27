@@ -67,17 +67,12 @@ export MAVEN_ARGS="-DskipTests"
 | 4️⃣        | 项目   | `pom.xml` → `<repositories>`                        | ✅       | 优先于默认中央仓库                                      |
 | 5️⃣ **最低** | 全局   | [超级 POM](https://www.codecopy.cn/post/2jjqwx)（中央仓库） | ✅       | **默认 `https://repo.maven.apache.org/maven2/`** |
 
-### 仓库镜像源列表/工件搜索
-**仓库镜镜像源**
+### 仓库镜像源列表
+**国内仓库镜镜像源**
 *  [阿里云](https://developer.aliyun.com/mvn/guide)
 * [华为云](https://www.huaweicloud.com/special/maven-jingxiang.html)
 * [腾讯云](https://mirrors.cloud.tencent.com/help/maven.html)
 * [网易](https://mirrors.163.com/.help/maven.html)
-**Maven仓库搜索**
-- [Maven Central Repository](https://search.maven.org/)
-- [MvnRepository](https://mvnrepository.com/)
-- IntelliJ IDEA中使用 [Maven Search](https://plugins.jetbrains.com/plugin/17170-maven-search) 插件。
-
 ## 项目级.mvn 目录
 `.mvn`位于项目**根目录**中的文件，用于存储Maven相关的配置文件。
 1.  `.mvn/jvm.config`：用于配置 JVM 参数。
