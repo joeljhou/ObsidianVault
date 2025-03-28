@@ -22,11 +22,16 @@ tags:
 ## Maven基础
 ### 安装
 [[install]]
+
 ### 配置
 [[configuring]]
+
 ### 5 分钟了解 Maven
 [[maven-in-five-minutes]]
+
 ### 构建生命周期
 [[lifecycles]]
-### Maven 依赖管理
-[[]]
+
+### Maven 依赖机制
+[[dependency]]
+
