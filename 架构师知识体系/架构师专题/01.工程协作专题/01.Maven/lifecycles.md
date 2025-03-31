@@ -9,9 +9,9 @@ isOriginal: true
 sticky: false
 star: false
 date: 2025-03-27
-category: 分类
+category: 工程协作
 tags:
-  - 标签
+  - Maven
 ---
 # Maven构建的生命周期
 官方来源：[生命周期参考](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference)

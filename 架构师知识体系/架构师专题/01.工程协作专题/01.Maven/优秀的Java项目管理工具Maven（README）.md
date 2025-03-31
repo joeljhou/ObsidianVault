@@ -7,11 +7,11 @@ cover:
 author: 流浪码客
 isOriginal: true
 sticky: false
-star: false
+star: true
 date: 2025-03-16
-category: 分类
+category: 工程协作
 tags:
-  - 标签
+  - Maven
 ---
 # 优秀的Java项目管理工具Maven
 
@@ -22,16 +22,16 @@ tags:
 ## Maven基础
 ### 安装
 [[install]]
-
 ### 配置
 [[configuring]]
-
 ### 5 分钟了解 Maven
 [[maven-in-five-minutes]]
-
 ### 构建生命周期
 [[lifecycles]]
-
-### Maven 依赖机制
+### 依赖机制
 [[dependency]]
+### 属性
+[[properties]]
+
+
 

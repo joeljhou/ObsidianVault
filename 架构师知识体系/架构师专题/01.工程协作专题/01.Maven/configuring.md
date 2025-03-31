@@ -9,9 +9,9 @@ isOriginal: true
 sticky: false
 star: false
 date: 2025-03-17
-category: 分类
+category: 工程协作
 tags:
-  - 标签
+  - Maven
 ---
 # 配置Maven
 主要官方来源：[配置Apache Maven](https://maven.apache.org/configure.html) ｜  [Settings.xml 的文档](https://maven.apache.org/settings.html)

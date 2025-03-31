@@ -9,9 +9,9 @@ isOriginal: true
 sticky: false
 star: false
 date: 2025-03-27
-category: 分类
+category: 工程协作
 tags:
-  - 标签
+  - Maven
 ---
 # Maven 依赖机制
 官方来源：[依赖机制介绍](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html)
@@ -56,20 +56,21 @@ Maven 自动解析依赖项的依赖（即 **传递依赖**），但这可能导
 **作用：** 依赖范围用于限制依赖项的传递性，并确定何时将依赖项包含在类路径中。
 **6 种范围：**
 1. **compile**（编译）： 
-	* 默认范围，适用于所有阶段（编译、测试、运行），并可传递。
-	* 适用场景：大多数依赖，如 `Spring`、`log4j`。
+	* 默认范围，适用于所有阶段（编译、测试、运行），并<u>可传递</u>。
+	* 适用场景：大多数依赖，如 [spring-jdbc](https://mvnrepository.com/artifact/org.springframework/spring-jdbc)、[log4j](https://mvnrepository.com/artifact/log4j/log4j/1.2.17)。
 2. **provided**（提供编译）：
 	* 仅编译、测试可用，运行时不可用，不传递。
-	* 适用场景：由外部容器（Tomcat、JDK）提供的依赖，如 `javax.servlet-api`。
+	* 适用场景：由外部容器（Tomcat、JDK）提供的依赖，如 [javax.servlet-api](https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api/4.0.1)，[lombok](https://mvnrepository.com/artifact/org.projectlombok/lombok/1.18.36)。
 3. **runtime**（运行时）：⏳【运行时加载】
 	* 测试、运行时可用，编译时不可用，可传递。
 	* 适用场景：运行时需要但编译时不需要的依赖，如 `mysql-connector-java`（JDBC 驱动）。
 4. **test**（测试）：
 	* 仅测试阶段可用，不传递。
-	* 适用场景：测试框架，如 `JUnit`、`Mockito`。
+	* 适用场景：测试框架，如 [junit](https://mvnrepository.com/artifact/junit/junit/4.13.2)、[mockito-all](https://mvnrepository.com/artifact/org.mockito/mockito-all/1.10.19)。
 5. **system**（系统）：
-	* 编译、测试、运行可用，但需手动提供 `systemPath`，不传递。
-	* 适用场景：本地 JAR 依赖（慎用，不推荐）。
+	* 编译、测试、运行可用。
+	* 由本地文件系统提供，使用 `systemPath`标签指定具体位置，不传递。
+	* 适用场景：本地 JAR 依赖（慎用，<u>不推荐</u>）。
 6. **import**（导入）：
 	* 仅用于 `<dependencyManagement>`，不添加具体依赖。
 	* 适用场景：BOM（版本管理），如 **Spring Boot 统一管理依赖版本**。
