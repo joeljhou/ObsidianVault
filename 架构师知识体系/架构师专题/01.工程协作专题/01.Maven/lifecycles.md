@@ -15,7 +15,7 @@ tags:
 ---
 # Maven构建的生命周期
 官方来源：[生命周期参考](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference)
-## 生命周期三大阶段
+## 三套生命周期
 由 `maven-core` 模块中的[components.xml](https://maven.apache.org/ref/current/maven-core/lifecycles.html)文件定义，分为**三大阶段**：
  ### 清理（clean）
 * 作用：删除 `target/` 目录，确保构建环境干净。
