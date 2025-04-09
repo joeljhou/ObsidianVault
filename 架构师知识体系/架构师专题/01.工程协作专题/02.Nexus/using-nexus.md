@@ -1,5 +1,5 @@
 ---
-title: 使用Nexus存储库
+title: 使用Nexus存储库（上传下载构件）
 shortTitle: 
 description: 
 icon: 
@@ -13,7 +13,7 @@ category: 分类
 tags:
   - 标签
 ---
-# 使用Nexus存储库
+# 使用Nexus存储库（上传下载构件）
 ## 配置私服账户（`setting.xml`）
 在 Maven 的 `settings.xml` 中添加 Nexus 认证信息，部署（`mvn deploy`）时使用。
 ```xml

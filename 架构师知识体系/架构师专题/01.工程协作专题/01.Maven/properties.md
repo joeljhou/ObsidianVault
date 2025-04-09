@@ -50,7 +50,6 @@ tags:
   </dependency>
 </dependencies>
 ```
-
 ## Maven 内置属性
 
 ### 项目属性
