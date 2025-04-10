@@ -17,7 +17,7 @@ tags:
 > 在国内使用 Nexus 作为 Maven 仓库代理时，为了提高构建速度并确保依赖稳定性，我们可以配置阿里云的 Maven 代理仓库。
 
 下面是详细的配置步骤：
-**1.创建代理仓库**：
+**1.创建代理`proxy`仓库**：
 * 在 Nexus [管理界面](http://localhost:8081/#admin/repository)中，选择 **Repository** -> **Create repository**。
 * 选择 **maven2 (proxy)** 类型。
 * 填写仓库名称（例如：`nexus-aliyun`）。

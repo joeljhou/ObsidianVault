@@ -26,3 +26,6 @@ tags:
 [[using-nexus]]
 ## 配置阿里云代理
 [[nexus-aliyun-proxy]]
+## 发布构件
+[[publish-artifacts]]
+
