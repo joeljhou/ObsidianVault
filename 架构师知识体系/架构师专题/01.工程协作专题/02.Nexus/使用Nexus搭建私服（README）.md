@@ -22,10 +22,11 @@ tags:
 [[架构师专题/01.工程协作专题/02.Nexus/install|install]]
 ## 仓库管理
 [[repository]]
-## 使用Nexus（上传下载构件）
+## 配置使用Nexus
 [[using-nexus]]
-## 配置阿里云代理
-[[nexus-aliyun-proxy]]
+## 配置阿里云代理仓库
+[[nexus-aliyun]]
 ## 发布构件
 [[publish-artifacts]]
-
+## 权限管理
+[[privileges-manage]]

@@ -2,6 +2,6 @@
 
 *  [[优秀的Java项目管理工具Maven（README）]]
 * [[使用Nexus搭建私服（README）]]
-* [[03.Git]]
+* [[03.版本控制工具Git]]
 * [[04.Jenkins]]]
 * [[05.Linux]]

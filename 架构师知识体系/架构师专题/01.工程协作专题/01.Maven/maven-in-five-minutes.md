@@ -17,6 +17,7 @@ tags:
 官方来源：[maven-in-five-minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
 ## 创建项目（命令行）
 * 官方文档：[坐标的命名约定](https://maven.apache.org/guides/mini/guide-naming-conventions.html)
+* 官方文档：[标准目录布局简介](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)
 	```shell
 	mvn archetype:generate \
 	    -DgroupId=com.mycompany.app \
@@ -25,8 +26,7 @@ tags:
 	    -DarchetypeVersion=1.5 \
 	    -DinteractiveMode=false
 	```
-## Maven工程的目录结构
-* 官方文档：[标准目录布局简介](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)
+## 了解Archetype 模板
 * IDEA 中的 Maven Archetype 模板
 	* `org.apache.maven.archetypes:maven-archetype-archetype`→ 自定义 Archetype 模板
 	* `org.apache.maven.archetypes:maven-archetype-j2ee-simple`→ <u>J2EE 应用</u>
@@ -38,7 +38,7 @@ tags:
 	* `org.apache.maven.archetypes:maven-archetype-site`→ 生成 Maven 站点
 	* `org.apache.maven.archetypes:maven-archetype-site-simple` → 简单的 Maven 站点
 	* `org.apache.maven.archetypes:maven-archetype-webapp`→ <u>Web 应用</u>
-* [🐟代码小抄-Maven工程的目录结构](https://codecopy.cn/post/s6z4y5)
+* [🐟代码小抄-Maven工程的目录结构](https://www.codecopy.cn/post/hp93dg)
 ## 设计思想（约定>配置>编码）
 Maven 作为 Java 构建工具，遵循 **“约定优于配置（Convention over Configuration）”** 的设计理念，并强调 **“先约定，再配置，最后编码”** 的原则。
 优点：
