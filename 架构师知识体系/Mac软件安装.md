@@ -71,4 +71,14 @@ IntelliJ IDEA 是一个强大的 IDE，广泛用于 Java 开发和其他多种�
 ### VS Code
 [官网](https://code.visualstudio.com/)
 Visual Studio Code 是一个轻量级的代码编辑器，支持多种编程语言并具有丰富的插件生态。
+### SSH客户端
+SecureCRT Mac
+https://termius.com/
 
+### Navicat
+* 投毒： https://www.bilibili.com/video/BV1Su411X7cL
+
+### LuLu
+开源防火墙
+* 官网： https://objective-see.org/products/lulu.html
+* up主推荐： https://www.bilibili.com/video/BV1ES4y1Q7BD
