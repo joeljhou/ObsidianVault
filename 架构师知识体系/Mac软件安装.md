@@ -4,6 +4,9 @@
 brew install git
 which git
 git --version
+
+# 安装gitk
+brew install git-gui
 ```
 - XCode CLI 安装时会包含`git`，推荐使用 `brew` 来安装最新版本。
 ### [python3](https://www.python.org/)

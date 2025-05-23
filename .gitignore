@@ -1,3 +1,4 @@
 /.idea/
 /.git/
-/**/.obsidian/
+.obsidian/
+.DS_Store
