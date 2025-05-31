@@ -917,7 +917,7 @@ $ git merge client
 ## 服务器上的 Git
 ### 协议
 Git支持四种主要协议用于数据传输：**本地协议**、**HTTP协议**（智能/哑）、**SSH协议**和**Git协议**。
-#### 本地协议（Local protocol）
+✅ **本地协议（Local protocol）**
 远程版本库就是硬盘内的另一个目录。
 克隆一个本地版本库，可以执行如下的命令：
 ```shell
@@ -933,7 +933,7 @@ $ git clone file:///opt/git/project.git
 * 共享文件系统比较难配置，不方便从多个位置访问。
 * 通过 NFS 访问版本库要比通过 SSH 访问慢。
 * 这个协议并不保护仓库避免意外的损坏。
-#### HTTP 协议
+✅  **HTTP 协议**
 Git 支持两种 HTTP 协议：**哑（Dumb）HTTP** 和 **智能（Smart）HTTP**，其中智能 HTTP在 Git 1.6.6 之后成为主流。
 **智能（Smart） HTTP 协议**
 * 最流行的使用 Git 的方式
@@ -947,7 +947,7 @@ Git 支持两种 HTTP 协议：**哑（Dumb）HTTP** 和 **智能（Smart）HTTP
 * 对非资深的使用者，HTTP 协议的可用性是主要的优势。
 **👎 缺点：**
 * 在 HTTP 上使用需授权的推送，管理凭证麻烦。
-#### SSH 协议
+✅  **SSH 协议**
 SSH 协议也是一个验证授权的网络协议；并且，因为其普遍性，架设和使用都很容易。
 通过 SSH 协议克隆版本库：
 ```shell
@@ -962,7 +962,7 @@ $ git clone user@server:project.git
 * 传输效率高。
 👎 缺点：
 * 不支持匿名访问。
-#### Git 协议
+✅  **Git 协议**
 Git 协议是一种专为 Git 设计的高效只读协议：
 * 监听默认端口 `9418`。
 * 使用时需在裸仓库根目录创建 `git-daemon-export-ok` 文件，表示允许通过 Git 协议访问。
@@ -973,3 +973,54 @@ Git 协议是一种专为 Git 设计的高效只读协议：
 * 缺乏授权机制，不适合作为访问项目版本库的唯一手段。 
 * 部署复杂，需要配置 `git-daemon` 守护进程，通常还需配合 `xinetd` 或类似服务管理工具。
 * 需开放防火墙端口 `9418`。
+### 在服务器上搭建 Git（略）
+###  生成 SSH 公钥
+> 关于在多种操作系统中生成 SSH 密钥的更深入教程，请参阅 GitHub 的 SSH 密钥指南 [https://help.github.com/articles/generating-ssh-keys](https://help.github.com/articles/generating-ssh-keys)。
+```shell
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+参考文档：
+* [简单配置实现多个GitHub和Gitee账号的SSH管理](https://blog.csdn.net/qq_40174960/article/details/131298464)
+### 配置服务器...
+### Git 守护进程...
+### Smart HTTP...
+### GitWeb
+如果你对项目有读写权限或只读权限，你可能需要建立起一个基于网页的简易查看器。 Git 提供了一个叫做 GitWeb 的 CGI 脚本来做这项工作。
+![GitWeb 的网页用户界面](http://img.geekyspace.cn/pictures/2025/20250528012638682.png)
+### GitLab
+更现代，功能更全的 Git 开源服务器。
+```shell
+# 创建目录（安全、幂等）
+mkdir -p $HOME/docker-data-volumes/gitlab/{config,logs,data}
+
+# 设置环境变量
+export GITLAB_HOME=$HOME/docker-data-volumes/gitlab/
+
+# 启动 GitLab 容器
+sudo docker run --detach \
+  --hostname gitlab.example.com \
+  --publish 8443:443 --publish 8080:80 --publish 2222:22 \
+  --name gitlab \
+  --restart always \
+  --volume $GITLAB_HOME/config:/etc/gitlab \
+  --volume $GITLAB_HOME/logs:/var/log/gitlab \
+  --volume $GITLAB_HOME/data:/var/opt/gitlab \
+  --shm-size 256m \
+  gitlab/gitlab-ce:latest
+```
+首次登录使用用户名`root`，通过如下方式获取密码。
+- Linux安装包方式：`sudo cat /etc/gitlab/initial_root_password`
+- Docker安装方式：`sudo docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password`
+修改密码为`git@2025`（学习使用，设置一个简单密码）
+参考文档：
+* [阿里云官方文档-部署GitLab代码托管平台](https://help.aliyun.com/zh/ecs/use-cases/deploy-and-use-gitlab)
+## Github
+### 账户的创建和配置
+* [官网](https://github.com/)
+* [注册](https://github.com/signup)
+* SSH 访问
+	* [简单配置实现多个GitHub和Gitee账号的SSH管理](https://blog.csdn.net/qq_40174960/article/details/131298464)
+* [设置邮箱](https://github.com/settings/emails)
+* [双因素身份验证-2FA](https://github.com/settings/security)
+### 对项目做出贡献
+* 派生（Fork）项目
