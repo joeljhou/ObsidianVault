@@ -1004,13 +1004,13 @@ mkdir -p $GITLAB_HOME/{config,logs,data}
 sudo docker run --detach \
   --platform linux/amd64 \
   --hostname gitlab.local \
-  --publish 8080:80 --publish 8443:443 --publish 2222:22 \
+  --publish 80:80 --publish 8443:443 --publish 2222:22 \
   --name gitlab-jh \
   --restart unless-stopped \
   --volume $GITLAB_HOME/config:/etc/gitlab \
   --volume $GITLAB_HOME/logs:/var/log/gitlab \
   --volume $GITLAB_HOME/data:/var/opt/gitlab \
-  --shm-size 256m \
+  --shm-size 1024m \
   registry.gitlab.cn/omnibus/gitlab-jh:latest
 ```
 首次登录使用用户名`root`，通过如下方式获取密码。
@@ -1021,8 +1021,11 @@ sudo cat /etc/gitlab/initial_root_password
 sudo docker exec -it gitlab-jh grep 'Password:' /etc/gitlab/initial_root_password
 ```
 方便学习使用的小设置：
-* [语言设置为中文](https://support.huaweicloud.com/bestpractice-ecs/zh-cn_topic_0142594569.html)
-* 登录后修改一个简单的密码：`git@2025`
+* [修改密码](https://support.huaweicloud.com/bestpractice-ecs/zh-cn_topic_0142594569.html)
+	```shell
+	jh@2025!
+	```
+* [偏好设置-本地化中设置中文](https://jihulab.com/gitlab-cn/gitlab/-/issues/3685)
 * 新增`host`文件配置：`127.0.0.1 gitlab.local`
 * 直接映射端口号`80`，以便直接通过域名`gitlab.local`访问
 参考文档：
