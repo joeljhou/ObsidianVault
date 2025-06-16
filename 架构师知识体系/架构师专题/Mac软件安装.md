@@ -75,15 +75,8 @@ $ brew reinstall mos
 ### [Mac Mouse Fix](https://macmousefix.com/)
 优化`Command`+鼠标滚轮的体验
 ### [iTerm2](https://iterm2.com/)
-
-
-	插件
-```shell
-
-```
-
-
-
+### [Rectangle](https://rectangleapp.com/)
+免费开源的Mac分屏工具
 ## 客户端
 安装软件前先通过终端启用“任何来源”（推荐）
 ```shell

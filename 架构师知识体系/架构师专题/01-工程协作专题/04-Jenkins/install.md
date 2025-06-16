@@ -29,6 +29,9 @@ tags:
 docker volume create jenkins-data
 ```
 **启动 Jenkins 容器**
+* 官方镜像 + 插件自动安装，自动下载并配置 JDK 和 Maven。
+* 使用官方自带 JDK 17 的镜像，直接启动 `jenkins/jenkins:lts-jdk17`。
+* Jenkins 镜像默认的 `JAVA_HOME` 是 `/opt/java/openjdk`。
 ```
 docker run -u root -d \
   --name jenkins \
@@ -39,6 +42,7 @@ docker run -u root -d \
   jenkins/jenkins:lts
 ```
 **使用宿主机 JDK 和 Maven**
+* ⚠️注意：必须挂载的是 Linux 平台的 JDK 和 Maven
 ```shell
 docker run -u root -d \
   --name jenkins \
@@ -48,9 +52,61 @@ docker run -u root -d \
   -v $JAVA_HOME:/opt/java/11.0.26:ro \
   -v $MAVEN_HOME:/opt/maven/3.8.8:ro \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  jenkins/jenkins:lts
+  jenkins/jenkins:lts-jdk17
 ```
-* ⚠️注意：Jenkins 镜像默认的 `JAVA_HOME` 是 `/opt/java/openjdk`
+**自定义 Dockerfile 构建镜像**
+基于官方 Jenkins 镜像，自己写 Dockerfile，预装好需要的 JDK、Maven、工具，甚至插件，镜像一体化，启动即用。
+* 编写 `Dockerfile`
+```shell
+# 使用官方 Jenkins 镜像，内置 JDK 17
+FROM jenkins/jenkins:lts-jdk17
+# 切换为 root 安装工具
+USER root
+# 1️⃣ 安装系统依赖（curl、unzip、ca-certificates）
+RUN echo "🔧 安装系统依赖..." && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends curl unzip ca-certificates
+# 2️⃣ 下载并解压 Maven
+ARG MAVEN_VERSION=3.8.8
+ENV MAVEN_HOME=/opt/maven/apache-maven-${MAVEN_VERSION} \
+    PATH=/opt/maven/apache-maven-${MAVEN_VERSION}/bin:$PATH
+RUN echo "⬇️ 下载并安装 Maven ${MAVEN_VERSION} ..." && \
+    curl -fsSL https://downloads.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.zip -o /tmp/maven.zip && \
+    unzip /tmp/maven.zip -d /opt/maven && \
+    rm -f /tmp/maven.zip
+# 3️⃣ 清理无用缓存，精简镜像体积
+RUN echo "🧹 清理缓存..." && \
+    apt-get remove --purge -y curl unzip && \
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+# 切回 Jenkins 用户
+USER jenkins
+# 4️⃣ 验证 Maven 安装，输出中文提示
+RUN echo "✅ Maven 安装完成，当前版本：" && mvn -v
+```
+* 构建镜像，格式是 `[命名空间/仓库名]:[标签]`
+```shell
+docker build -t geekyspace/jenkins:lts-jdk17-maven3.8.8 .
+```
+* 发布镜像
+```shell
+docker login
+# 如果镜像不带命名空间，需要给本地镜像打标签（添加命名空间）
+docker tag jenkins:lts-jdk17-maven3.8.8 geekyspace/jenkins:lts-jdk17-maven3.8.8
+# 推送带命名空间的镜像到 Docker Hub
+docker push geekyspace/jenkins:lts-jdk17-maven3.8.8
+```
+* 运行 Jenkins 容器
+```shell
+docker run -u root -d \
+  --name jenkins \
+  --restart unless-stopped \
+  -p 9090:8080 -p 50000:50000 \
+  -v jenkins-data:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  geekyspace/jenkins:lts-jdk17-maven3.8.8
+```
 ## 安装后设置向导
 ### 解锁 Jenkins
 当您第一次访问新的Jenkins实例时，系统会要求您使用自动生成的密码对其进行解锁。
@@ -72,11 +128,4 @@ sudo docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 ![Instance Configuration](http://img.geekyspace.cn/pictures/2025/20250602202302224.png)
 Jenkins 已准备就绪！
 ![Jenkins is ready!](http://img.geekyspace.cn/pictures/2025/20250602202622166.png)
-### 安装中文插件（新版无效）
-* [Locale plugin](https://plugins.jenkins.io/locale)
-* [Localization: Chinese (Simplified)](https://plugins.jenkins.io/localization-zh-cn)
-![Plugin Manager](http://img.geekyspace.cn/pictures/2025/20250602190701585.png)
-
-
-
 

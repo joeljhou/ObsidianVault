@@ -19,9 +19,9 @@ tags:
 
 > Maven 是一个项目管理和构建工具，主要用于 Java 项目的依赖管理、编译、测试、打包和部署。它采用 **POM（Project Object Model）** 作为项目配置文件（`pom.xml`），并提供了一套标准化的项目构建流程。
 ## 安装
-[[架构师专题/01-工程协作专题/01-Maven/install|install]]
+[[架构师专题/01-工程协作专题/01-Maven/installation|installation]]
 ## 配置
-[[configuring]]
+[[架构师专题/01-工程协作专题/01-Maven/configuring|configuring]]
 ## 5 分钟了解 Maven
 [[maven-in-five-minutes]]
 ## 构建生命周期
