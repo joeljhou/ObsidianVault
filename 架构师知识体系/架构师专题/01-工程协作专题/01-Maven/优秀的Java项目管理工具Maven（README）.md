@@ -14,9 +14,7 @@ tags:
   - Maven
 ---
 # 优秀的Java项目管理工具Maven
-
 主要官方来源：[Maven官网](https://maven.apache.org) ｜ [Github](https://github.com/apache/maven) ｜ [Maven实战](https://book.douban.com/subject/5345682/)
-
 > Maven 是一个项目管理和构建工具，主要用于 Java 项目的依赖管理、编译、测试、打包和部署。它采用 **POM（Project Object Model）** 作为项目配置文件（`pom.xml`），并提供了一套标准化的项目构建流程。
 ## 安装
 [[架构师专题/01-工程协作专题/01-Maven/installation|installation]]

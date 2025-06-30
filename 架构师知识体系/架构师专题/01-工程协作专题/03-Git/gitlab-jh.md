@@ -19,6 +19,7 @@ tags:
 > 更现代，功能更全的 Git 开源服务器。
 ## 部署Docker 
 参考：[极狐GitLab Docker部署](https://gitlab.cn/docs/jh/install/docker.html)
+最新版本：<u>18.0</u>
 ```shell
 # 设置环境变量
 export GITLAB_HOME=$HOME/docker-volumes/gitlab/
@@ -31,37 +32,36 @@ mkdir -p $GITLAB_HOME/{config,logs,data}
 
 # 运行极狐 GitLab，启用 amd64 模拟
 sudo docker run --detach \
-  --platform linux/amd64 \
-  --hostname gitlab.orb.local \
-  --publish 80:80 --publish 8443:443 --publish 2222:22 \
   --name gitlab-jh \
   --restart unless-stopped \
+  --env TZ=Asia/Shanghai \
+  --hostname gitlab.orb.local \
+  --shm-size 2048m \
+  --publish 80:80 --publish 8443:443 --publish 2222:22 \
   --volume $GITLAB_HOME/config:/etc/gitlab \
   --volume $GITLAB_HOME/logs:/var/log/gitlab \
   --volume $GITLAB_HOME/data:/var/opt/gitlab \
-  --shm-size 2048m \
-  registry.gitlab.cn/omnibus/gitlab-jh:latest
+  registry.gitlab.cn/omnibus/gitlab-jh
 ```
 **Docker卷方案**
 ⚠️ 避免在Mac M芯片上的权限问题，第一次可以启动，停止后无法启动。
 ```shell
 # 创建 Docker 卷
-docker volume create gitlab-config
-docker volume create gitlab-logs
-docker volume create gitlab-data
+docker volume create gitlab_config
+docker volume create gitlab_logs
+docker volume create gitlab_data
 
 # 运行极狐 GitLab，启用 amd64 模拟，挂载 Docker 卷
 sudo docker run --detach \
-  --platform linux/amd64 \
   --hostname gitlab.orb.local \
   --publish 80:80 --publish 8443:443 --publish 2222:22 \
   --name gitlab \
   --restart unless-stopped \
-  --volume gitlab-config:/etc/gitlab \
-  --volume gitlab-logs:/var/log/gitlab \
-  --volume gitlab-data:/var/opt/gitlab \
+  --volume gitlab_config:/etc/gitlab \
+  --volume gitlab_logs:/var/log/gitlab \
+  --volume gitlab_data:/var/opt/gitlab \
   --shm-size 2048m \
-  registry.gitlab.cn/omnibus/gitlab-jh:latest
+  registry.gitlab.cn/omnibus/gitlab-jh
 ```
 ## 获取密码
 首次登录使用用户名`root`，通过如下方式获取密码。

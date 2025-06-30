@@ -18,12 +18,12 @@ Nexus 是一个流行的私有 Maven 仓库，广泛用于发布和管理构件�
 ## web上传（jar）
 首先，打开[阿里云云效Maven仓库](https://developer.aliyun.com/mvn/search)，搜索并找到你想要上传的依赖包。在本例中，我们选择了 `jenkins-client` 版本 `1.0.0`。
 ![jenkins-client-1.0.0.jar](http://img.geekyspace.cn/pictures/2025/20250410002558348.png)
-接下来，登录到 Nexus 仓库的[Web Upload界面](http://localhost:8081/#browse/upload)。在`maven-releases`仓库上传下载好的包，并把相关信息填写完整：
+接下来，登录到 Nexus 仓库的[Web Upload界面](https://nexus.orb.local/#browse/upload)。在`maven-releases`仓库上传下载好的包，并把相关信息填写完整：
 *  **Group ID**： `com.offbytwo.jenkins`
 *  **Artifact ID**： `jenkins-client`
 * **Version**： `1.0.0`
 ![upload jenkins-client.1.0.0.jar](http://img.geekyspace.cn/pictures/2025/20250410003136625.png)
-然后点击上传按钮。上传完成后，你可以在[仓库列表](http://localhost:8081/#browse/browse:maven-releases)中找到该构件，确保其已成功发布。
+然后点击上传按钮。上传完成后，你可以在[仓库列表](https://nexus.orb.local/#browse/browse:maven-releases)中找到该构件，确保其已成功发布。
 ![search-maven](http://img.geekyspace.cn/pictures/2025/20250410003928022.png)
 ## `mvn`发布
 除了 Web 界面上传构件外，使用 Maven 命令行进行构件发布是更常见的做法。这种方法适合自动化部署和持续集成。
@@ -37,7 +37,7 @@ mvn deploy:deploy-file \
     -DartifactId=jenkins-client \
     -Dversion=0.3.8 \
     -Dfile=/Users/joeljhou/Downloads/lib/jenkins-client-0.3.8.jar \
-    -Durl=http://localhost:8081/repository/maven-releases/ \
+    -Durl=https://nexus.orb.local/repository/maven-releases/ \
     -DrepositoryId=maven-releases \
     -s /Users/joeljhou/.sdkman/candidates/maven/3.6.3/conf/settings.xml
 ```

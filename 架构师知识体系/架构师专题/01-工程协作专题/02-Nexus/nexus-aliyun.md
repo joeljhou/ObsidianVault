@@ -18,7 +18,7 @@ tags:
 
 下面是详细的配置步骤：
 **1.创建代理`proxy`仓库**：
-* 在 Nexus [管理界面](http://localhost:8081/#admin/repository)中，选择 **Repository** -> **Create repository**。
+* 在 Nexus [管理界面](https://nexus.orb.local/#admin/repository)中，选择 **Repository** -> **Create repository**。
 * 选择 **maven2 (proxy)** 类型。
 * 填写仓库名称（例如：`nexus-aliyun`）。
 **2.配置远程存储地址**：
@@ -27,7 +27,7 @@ tags:
 	https://maven.aliyun.com/repository/public
 	```
 * **国内仓库镜镜像源**
-	*  [阿里云](https://developer.aliyun.com/mvn/guide)
+	* [阿里云](https://developer.aliyun.com/mvn/guide)
 	* [华为云](https://www.huaweicloud.com/special/maven-jingxiang.html)
 	* [腾讯云](https://mirrors.cloud.tencent.com/help/maven.html)
 	* [网易](https://mirrors.163.com/.help/maven.html)

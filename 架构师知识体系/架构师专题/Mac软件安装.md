@@ -106,4 +106,19 @@ https://termius.com/
 开源防火墙
 * 官网： https://objective-see.org/products/lulu.html
 * up主推荐： https://www.bilibili.com/video/BV1ES4y1Q7BD
+### MySQL
+```shell
+# 创建 MySQL 数据卷（仅需执行一次）
+docker volume create mysql8_data
 
+# 运行 MySQL 8 容器
+docker pull mysql:8.0.42
+docker run -d \
+  --name mysql8 \
+  --restart unless-stopped \
+  -e TZ=Asia/Shanghai \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -p 3306:3306 \
+  -v mysql8_data:/var/lib/mysql \
+  mysql:8.0.42
+```

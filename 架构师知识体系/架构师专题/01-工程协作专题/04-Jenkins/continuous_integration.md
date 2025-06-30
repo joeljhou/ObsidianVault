@@ -153,6 +153,13 @@ cd /Users/joeljhou/CodeHub/joeljhou/jenkins-deploy/simple-api-pipeline/docker/de
 ```
 ![构建镜像并发布](http://img.geekyspace.cn/pictures/2025/202506142326275.png)
 保存后，返回`simple-api-pipeline`项目主页，点击 **「立即构建`Build Now`」**。
+⚠️注意：**为什么会构建不成功？**
+1. **docker 命令未使用全路径**
+	* Jenkins 远程执行环境的 `PATH` 变量可能不完整，找不到 `docker` 或 `docker-compose` 命令导致失败。
+	* ➡️ 解决：命令中使用完整路径，例如 `/usr/local/bin/docker-compose`。
+2. **拉取镜像需要 Docker 登录**
+	* 若未登录或凭据失效，拉取镜像时会失败，导致构建失败。macOS 下的 Keychain 在无交互环境中无法解锁，常见于自动化环境。
+	* ➡️ 解决：提前在远程服务器登录 Docker 或预先拉取所需镜像，避免构建时再拉。
 #### 验证部署成功
 日志最后输出`Finished: SUCCESS`表示流水线执行完毕，随后验证容器是否启动。
 ![镜像部署成功](http://img.geekyspace.cn/pictures/2025/202506142329097.png)
