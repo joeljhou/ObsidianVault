@@ -126,15 +126,16 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 #### 配置Docker Compose
 在 `docker/dev/docker-compose.yml` 中添加服务配置：
 ```shell
-version: '3.8'  
-services:  
-  simple-api-pipeline:  
-    build:  
-      context: ../..  
-      dockerfile: Dockerfile  
-    container_name: simple-api-pipeline  
-    ports:  
-      - "8080:8080"
+version: '3.8'
+services:
+  simple-api-pipeline:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    image: simple-api-pipeline
+    container_name: simple-api-pipeline
+    ports:
+      - "8082:8080"
 ```
 > 完成以上步骤后，推送项目至 GitLab。
 #### Docker容器部署启动

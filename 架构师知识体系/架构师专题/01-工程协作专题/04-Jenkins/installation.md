@@ -25,7 +25,7 @@ tags:
 ### Docker（推荐）
 参考Github [官方 Jenkins Docker 镜像](https://github.com/jenkinsci/docker/blob/master/README.md#official-jenkins-docker-image)
 **启动 Jenkins 容器**
-* 目前最新版本：``。
+* 目前最新版本：`2.504.2`。
 * 官方镜像 + 插件自动安装，自动下载并配置 JDK 和 Maven。
 * 使用官方自带 JDK 17 的镜像，直接启动 `jenkins/jenkins:lts-jdk17`。
 * Jenkins 镜像默认的 `JAVA_HOME` 是 `/opt/java/openjdk`。
@@ -38,9 +38,8 @@ docker pull jenkins/jenkins:2.504.3
 docker run -u root -d \
   --name jenkins \
   --restart unless-stopped \
-  -p 8080:8080 -p 50000:50000 \
+  -p 9090:8080 -p 50000:50000 \
   -v jenkins_data:/var/jenkins_home \
-  -v /var/run/docker.sock:/var/run/docker.sock \
   jenkins/jenkins:lts
 ```
 **使用宿主机 JDK 和 Maven**
@@ -53,8 +52,27 @@ docker run -u root -d \
   -v jenkins_data:/var/jenkins_home \
   -v $JAVA_HOME:/opt/java/17.0.14:ro \
   -v $MAVEN_HOME:/opt/maven/3.8.8:ro \
-  -v /var/run/docker.sock:/var/run/docker.sock \
   jenkins/jenkins:lts-jdk17
+```
+**使用宿主机的 Docker**
+```shell
+# 通过 which docker 找到 docker 命令的执行文件路径
+# 再用 ls -l 查看该路径的详细信息（包括符号链接）
+$ ls -l $(which docker)
+lrwxr-xr-x  1 root  wheel  53  4  3 15:36 /usr/local/bin/docker -> /Applications/OrbStack.app/Contents/MacOS/xbin/docker
+# 使用宿主机的 Docker 命令，挂载 Docker 套接字及 Docker 可执行文件
+docker run -u root -d \
+  --name jenkins \
+  --restart unless-stopped \
+  --group-add $(stat -f "%g" /var/run/docker.sock) \
+  -p 9090:8080 -p 50000:50000 \
+  -v jenkins_data:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /Applications/OrbStack.app/Contents/MacOS/xbin/docker:/usr/bin/docker \
+  jenkins/jenkins:lts
+# ⚠️ 进入 Jenkins 容器，无法执行映射的macOS Docker文件，架构不兼容。
+root@e0051f94b119:/# docker ps
+Cannot run macOS (Mach-O) executable in Docker: Exec format error
 ```
 **自定义 Dockerfile 构建镜像**
 基于官方 Jenkins 镜像，自己写 Dockerfile，预装好需要的 JDK、Maven、工具，甚至插件，镜像一体化，启动即用。
@@ -91,7 +109,7 @@ RUN echo "✅ Maven 安装完成，当前版本：" && mvn -v
 ```shell
 docker build -t geekyspace/jenkins:lts-jdk17-maven3.8.8 .
 ```
-* 发布镜像
+* 发布镜像，[查看 Jenkins 镜像标签](https://hub.docker.com/r/geekyspace/jenkins/tags)
 ```shell
 docker login
 # 如果镜像不带命名空间，需要给本地镜像打标签（添加命名空间）
@@ -106,7 +124,6 @@ docker run -u root -d \
   --restart unless-stopped \
   -p 9090:8080 -p 50000:50000 \
   -v jenkins_data:/var/jenkins_home \
-  -v /var/run/docker.sock:/var/run/docker.sock \
   geekyspace/jenkins:lts-jdk17-maven3.8.8
 ```
 ## 安装后设置向导
@@ -130,4 +147,3 @@ sudo docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 ![Instance Configuration](http://img.geekyspace.cn/pictures/2025/20250602202302224.png)
 Jenkins 已准备就绪！
 ![Jenkins is ready!](http://img.geekyspace.cn/pictures/2025/20250602202622166.png)
-

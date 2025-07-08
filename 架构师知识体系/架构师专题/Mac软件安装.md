@@ -106,7 +106,22 @@ https://termius.com/
 开源防火墙
 * 官网： https://objective-see.org/products/lulu.html
 * up主推荐： https://www.bilibili.com/video/BV1ES4y1Q7BD
-### MySQL
+### MySQL 5.7
+* 服务器版本: `5.7.44`
+```shell
+docker volume create mysql57_data
+
+docker run -d \
+  --name mysql5.7 \
+  --platform linux/amd64 \
+  --restart unless-stopped \
+  -e TZ=Asia/Shanghai \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -p 3307:3306 \
+  -v mysql57_data:/var/lib/mysql \
+  mysql:5.7
+```
+### MySQL 8
 ```shell
 # 创建 MySQL 数据卷（仅需执行一次）
 docker volume create mysql8_data
@@ -121,4 +136,22 @@ docker run -d \
   -p 3306:3306 \
   -v mysql8_data:/var/lib/mysql \
   mysql:8.0.42
+```
+
+### Redis7
+```shell
+# 创建 Redis 数据卷（只需执行一次）
+docker volume create redis7_data
+
+# 拉取 Redis 7 官方镜像
+docker pull redis:7
+
+docker run -d \
+  --name redis7 \
+  --restart unless-stopped \
+  -e TZ=Asia/Shanghai \
+  -p 6379:6379 \
+  -v redis7_data:/data \
+  redis:7 \
+  redis-server --appendonly yes --requirepass 123456
 ```

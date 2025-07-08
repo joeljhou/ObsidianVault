@@ -11,5 +11,5 @@ B站视频教程：[华为认证DevOps实战](https://www.bilibili.com/video/BV1
 [[continuous_delivery]]
 ## Jenkins 集成 SonarQube 代码审查
 [[sonarqube]]
-## Harbor 镜像仓库管理
+## Harbor 搭建私有镜像仓库
 [[harbor]]
