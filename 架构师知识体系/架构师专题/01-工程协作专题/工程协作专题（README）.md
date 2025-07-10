@@ -2,5 +2,5 @@
 *  [[优秀的Java项目管理工具Maven（README）]]
 * [[使用Nexus搭建私服（README）]]
 * [[版本控制工具Git（README）]]
-* [[Jenkins自动化构建与持续集成（README）]]]
+* [[Jenkins自动化构建与持续集成（README）]]
 * [[linux操作系统教程（README）]]

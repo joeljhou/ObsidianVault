@@ -25,7 +25,7 @@ tags:
 	* 设置域名或 IP，例如：`hostname: proxy.harbor.orb.local`
 	* 注释或删除 HTTPS 相关配置（内网部署可跳过）
 	* 配置数据持久化目录`data_volume`，确保目录有读写权限，例如：`/Users/joeljhou/Services/harbor/data`
-	* 参考详细配置：[🐟代码小抄-Harbor配置](https://codecopy.cn/post/vxniw0)
+	* 参考：[🐟代码小抄-Harbor安装配置](https://codecopy.cn/post/vxniw0)
 4. **执行安装脚本** ：`./install.sh`
 ***
 **查看 Harbor 容器启动成功**

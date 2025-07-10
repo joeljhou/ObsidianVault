@@ -16,7 +16,7 @@ tags:
 # 持续集成（CI）
 
 ## 创建Java Web项目
-使用 Spring Initializr 创建 `simple-api-pipeline` 项目：
+使用 **Spring Initializr** 创建 `simple-api-pipeline` 项目：
 * 勾选 `Spring Web` 模块。
 - 项目地址：[GitHub - simple-api-pipeline](https://github.com/joeljhou/simple-api-pipeline)
 ![simple-api-pipeline](http://img.geekyspace.cn/pictures/2025/202506090207404.png)

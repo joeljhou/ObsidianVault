@@ -13,3 +13,5 @@ B站视频教程：[华为认证DevOps实战](https://www.bilibili.com/video/BV1
 [[sonarqube]]
 ## Harbor 搭建私有镜像仓库
 [[harbor]]
+## Jenkins 流水线入门与实践
+[[pipeline]]

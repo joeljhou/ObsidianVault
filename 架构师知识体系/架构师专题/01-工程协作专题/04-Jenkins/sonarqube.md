@@ -13,7 +13,7 @@ category: 工程协作
 tags:
   - SonarQube
 ---
-# Jenkins 集成 SonarQube 代码审查
+# 集成 SonarQube 代码审查
 主要官方来源：[官网](https://www.sonarsource.com/products/sonarcloud/) ｜ [文档](https://docs.sonarsource.com/sonarqube/) ｜ [Github](https://github.com/SonarSource/sonarqube)
 > SonarQube 是一个持续的代码质量和安全管理平台。它通过静态分析帮助团队发现代码中的缺陷、漏洞和代码异味，从而提升软件质量和安全性。SonarQube 支持多种编程语言，可集成到现有的开发流程和持续集成工具中，实现自动化的代码审查。
 ## 安装部署环境
@@ -81,7 +81,7 @@ docker run -d \
 ```shell
 名称：sonarqube-access
 类型：用户令牌
-令牌：squ_6a0ae0c438031507efbb1c116c5bdda6b8d845a0
+令牌：squ_d9de66c6d9564d3c5829047fd7597a0bff492b6e
 ```
 ### 项目创建三种方式
 在 SonarQube 中，可以通过以下三种方式创建并分析项目：
@@ -95,7 +95,7 @@ docker run -d \
 mvn clean verify sonar:sonar \
   -Dsonar.projectKey=simple-api-pipeline \
   -Dsonar.host.url=http://sonarqube.orb.local \
-  -Dsonar.login=squ_6a0ae0c438031507efbb1c116c5bdda6b8d845a0
+  -Dsonar.login=squ_d9de66c6d9564d3c5829047fd7597a0bff492b6e
 ```
 命令执行后，打开 [SonarQube Projects](https://sonarqube.orb.local/projects) 页面：
 ![sonarqube项目](http://img.geekyspace.cn/pictures/2025/202506251503280.png)
@@ -109,7 +109,7 @@ SonarQube 服务器地址和令牌
         <!-- ⚠️ 不推荐将 Token 写入此处，可能导致泄露 -->
         <sonar.projectKey>simple-api-pipeline</sonar.projectKey>  
         <sonar.host.url>http://sonarqube.orb.local</sonar.host.url>  
-        <sonar.login>squ_6a0ae0c438031507efbb1c116c5bdda6b8d845a0</sonar.login> 
+        <sonar.login>squ_d9de66c6d9564d3c5829047fd7597a0bff492b6e</sonar.login> 
     </properties>
 </project>
 ```
@@ -126,7 +126,7 @@ mvn clean verify sonar:sonar
     <id>sonar</id>
     <properties>
       <sonar.host.url>http://sonarqube.orb.local</sonar.host.url>
-      <sonar.login>squ_6a0ae0c438031507efbb1c116c5bdda6b8d845a0</sonar.login>
+      <sonar.login>squ_d9de66c6d9564d3c5829047fd7597a0bff492b6e</sonar.login>
     </properties>
   </profile>
 </profiles>
@@ -155,7 +155,7 @@ mvn clean verify sonar:sonar -s $MAVEN_HOME/conf/settings.xml
 ```shell
 服务名称：sonarqube
 服务地址：http://sonarqube.orb.local
-添加令牌凭证：squ_6a0ae0c438031507efbb1c116c5bdda6b8d845a0
+添加令牌凭证：squ_d9de66c6d9564d3c5829047fd7597a0bff492b6e
 ```
 ![配置 SonarQube 服务](http://img.geekyspace.cn/pictures/2025/202506291924183.png)
 
@@ -163,6 +163,7 @@ mvn clean verify sonar:sonar -s $MAVEN_HOME/conf/settings.xml
 ![添加 SonarQube 令牌凭证](http://img.geekyspace.cn/pictures/2025/202506291922053.png)
 ### 配置`SonarQube Scanner`工具（可选）
 **Jenkins 管理 → 全局工具配置 → 「SonarQube Scanner」**
+* Name：`sonar-scanner-7.1`
 ![sonar-scanner安装](http://img.geekyspace.cn/pictures/2025/202506292012485.png)
 **工具作用：**  
 这是实际执行代码扫描的命令行工具（即 `sonar-scanner`），用于扫描项目代码并将结果提交到 SonarQube。
@@ -174,10 +175,10 @@ mvn clean verify sonar:sonar -s $MAVEN_HOME/conf/settings.xml
 * 💡 提示：点击`?`按钮可查看更多配置项说明
 ```shell
 # 项目唯一标识（必填），格式通常是 groupId:artifactId
-sonar.projectKey=com.geekyspace:simple-api-pipeline
+sonar.projectKey=com.geekyspace:simple-api-freestyle
 # 项目元数据（以前是必需的，自 SonarQube 6.1 起是可选的）
 sonar.projectName=${JOB_NAME}
-sonar.projectVersion=0.0.1-SNAPSHOT
+sonar.projectVersion=${BRANCH_OR_TAG}
 # 源代码目录路径（必填）
 # 使用 './' 表示从项目根目录开始扫描，避免遗漏非标准目录下的源码文件。
 # 如果源码都集中在标准路径，也可以改为 src/main/java 以减少无关扫描。
