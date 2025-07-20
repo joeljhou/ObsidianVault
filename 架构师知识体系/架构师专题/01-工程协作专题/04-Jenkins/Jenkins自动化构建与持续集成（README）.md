@@ -1,3 +1,19 @@
+---
+title: Jenkins自动化构建与持续集成
+shortTitle: 
+description: 
+icon: 
+cover: 
+author: 流浪码客
+isOriginal: true
+sticky: false
+star: false
+date: ""
+category: 工程协作
+tags:
+  - Jenkins
+---
+# Jenkins自动化构建与持续集成（README）
 主要官方来源：[官网](https://www.jenkins.io/zh/) ｜ [教程](https://www.jenkins.io/zh/doc/tutorials/)
 参考笔记[DevOps云学堂](https://www.yuque.com/devopsgroup)
 B站视频教程：[华为认证DevOps实战](https://www.bilibili.com/video/BV1QS7HzgETB/)

@@ -29,11 +29,3 @@ tags:
 - 可以选择自动安装，或指定已安装的 Maven 路径
 - 建议命名为 `maven-<version>`，如 `maven-3.8.8`
 ![Maven](http://img.geekyspace.cn/pictures/2025/20250604222657871.png)
-## 插件安装
-
-| 插件名称                                                            | 说明                                    |
-| --------------------------------------------------------------- | ------------------------------------- |
-| [Git Parameter](https://plugins.jenkins.io/git-parameter)       | 支持构建参数中选择 Git 分支、标签等                  |
-| [Publish Over SSH](https://plugins.jenkins.io/publish-over-ssh) | 支持通过 SSH 发布构建产物或执行远程命令                |
-| [Deploy to container](https://plugins.jenkins.io/deploy)        | 此插件允许您在构建成功后，将war文件部署到容器中。            |
-| [SonarQube Scanner](https://plugins.jenkins.io/sonar)           | 此插件允许轻松集成SonarQube，这是一个开源的代码质量持续检查平台。 |

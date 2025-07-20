@@ -31,23 +31,19 @@ pipeline {
     agent any
 
     environment {
-        HARBOR_ADDR = 'proxy.harbor.orb.local'
-        HARBOR_REPO = 'repo'
-        IMAGE_NAME  = 'simple-api-pipeline'
-        IMAGE_TAG   = 'origin-dev'
-        EXPOSE_PORT = '8082'
+        TAG = "${BRANCH_OR_TAG.replaceAll('/', '-')}"
     }
 
     stages {
         stage('Git拉取代码') {
             steps {
                 echo '✅ Git拉取代码 SUCCESS'
-                }
+            }
         }
         stage('Maven构建项目') {
             steps {
                 echo '✅ Maven构建项目 SUCCESS'
-                }
+            }
         }
         stage('SonarQube扫描') {
             steps {
@@ -94,7 +90,7 @@ pipeline {
 ![Blue Ocean-阶段显示](http://img.geekyspace.cn/pictures/2025/202507092112761.png)
 ## Pipeline 语法生成器
 在编写 Jenkinsfile 时，你可以通过 Jenkins 提供的 [Pipeline Syntax](https://jenkins.orb.local/job/simple-api-pipeline/pipeline-syntax) 工具快速生成常用的流水线步骤语法。
-
+[参考完整 Jenkinsfile 配置](https://github.com/joeljhou/simple-api-pipeline/blob/main/Jenkinsfile)
 ### Git拉取代码
 **Pipeline Project → 配置 → 勾选「This project is parameterized」 → 添加参数（Add Parameter） → 选择 `Git Parameter`**
 ![启用 Git 参数化构建](http://img.geekyspace.cn/pictures/2025/202507101015324.png)

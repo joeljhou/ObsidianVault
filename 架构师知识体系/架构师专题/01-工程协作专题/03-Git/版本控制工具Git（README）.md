@@ -17,7 +17,7 @@ tags:
 主要官方来源：[官网](https://git-scm.com/) ｜  [Pro Git（中文版）在线](https://www.progit.cn/) ｜ [IDEA中高效使用Git](https://www.jetbrains.com/help/idea/using-git-integration.html)
 [图解 Git](https://marklodato.github.io/visual-git-guide/index-zh-cn.html)
 ## 概述及历史
- [[overview-history]]
+[[架构师专题/01-工程协作专题/03-Git/overview-history|overview-history]]
 ##  Git 安装
 [[架构师专题/01-工程协作专题/03-Git/installation|installation]]
 ## Git 配置

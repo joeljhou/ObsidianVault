@@ -3,4 +3,4 @@
 * [[使用Nexus搭建私服（README）]]
 * [[版本控制工具Git（README）]]
 * [[Jenkins自动化构建与持续集成（README）]]
-* [[linux操作系统教程（README）]]
+* [[互联网应用基石Linux（README）]]

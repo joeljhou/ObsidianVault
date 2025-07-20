@@ -84,7 +84,9 @@ sudo spctl --master-disable
 ```
 ### [Orbstack](https://orbstack.dev/)
 ```shell
-ssh -i ~/.orbstack/ssh/id_ed25519 -p 32222 joeljhou@centos9-jenkins@orb
+ssh -i ~/.orbstack/ssh/id_ed25519 -p 32222 joeljhou@centos9@orb
+ssh -i ~/.orbstack/ssh/id_ed25519 -p 32222 joeljhou@ubuntu24@orb
+ssh -i ~/.orbstack/ssh/id_ed25519 -p 32222 joeljhou@rocky9@orb
 ```
 ### [Sublimetext](https://www.sublimetext.com/)
 文本编辑器
@@ -155,3 +157,5 @@ docker run -d \
   redis:7 \
   redis-server --appendonly yes --requirepass 123456
 ```
+### keepass
+
