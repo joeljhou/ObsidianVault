@@ -66,10 +66,13 @@ scp ~/.orbstack/ssh/id_ed25519.pub joeljhou@ubuntu24.orb.local:~/
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
 cat ~/id_ed25519.pub >> ~/.ssh/authorized_keys
-chmod 644 ~/.ssh/authorized_keys
 rm ~/id_ed25519.pub
 # 密钥访问
 ssh -i ~/.orbstack/ssh/id_ed25519 joeljhou@ubuntu24.orb.local
+
+# parallels 虚拟机 Ununtu
+scp ~/.orbstack/ssh/id_ed25519.pub parallels@ubuntu-linux-2404:~/
+ssh -i ~/.orbstack/ssh/id_ed25519 parallels@ubuntu-linux-2404
 ```
 ### 命令汇总
 ```shell
@@ -83,3 +86,6 @@ ssh -i ~/.orbstack/ssh/id_ed25519 joeljhou@ubuntu24.orb.local
 ssh -i ~/.orbstack/ssh/id_ed25519 joeljhou@centos9.orb.local
 ssh -i ~/.orbstack/ssh/id_ed25519 joeljhou@rocky9.orb.local
 ```
+## 三方软件登陆
+### Termius
+![Termius](http://img.geekyspace.cn/pictures/2025/202507210000833.png)
