@@ -129,7 +129,7 @@ docker run -d \
 docker volume create mysql8_data
 
 # 运行 MySQL 8 容器
-docker pull mysql:8.0.42
+docker pull mysql:8.4.6
 docker run -d \
   --name mysql8 \
   --restart unless-stopped \
@@ -137,7 +137,7 @@ docker run -d \
   -e MYSQL_ROOT_PASSWORD=root \
   -p 3306:3306 \
   -v mysql8_data:/var/lib/mysql \
-  mysql:8.0.42
+  mysql:8.4.6
 ```
 
 ### Redis7
